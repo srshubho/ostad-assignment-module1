@@ -25,16 +25,18 @@ require_once "partial/header.php";
             $average = number_format($average, 2);
 
 
-            if ($average >= 90) {
+            if ($average >= 90 && $average <= 100) {
                 $grade = 'A';
-            } elseif ($average >= 80) {
+            } elseif ($average >= 80 && $average <= 89) {
                 $grade = 'B';
-            } elseif ($average >= 70) {
+            } elseif ($average >= 70 && $average <= 79) {
                 $grade = 'C';
-            } elseif ($average >= 60) {
+            } elseif ($average >= 60 && $average <= 69) {
                 $grade = 'D';
-            } else {
+            } elseif ($average >= 0 && $average <= 59) {
                 $grade = 'F';
+            } else {
+                $grade = 'Invalid input';
             }
 
 
@@ -72,7 +74,7 @@ require_once "partial/header.php";
                 <p><strong>Average Score:</strong>
                     <?php echo $average; ?>
                 </p>
-                <p><strong>Letter Grade:</strong>
+                <p><strong>Grade:</strong>
                     <?php echo $grade; ?>
                 </p>
             </div>
