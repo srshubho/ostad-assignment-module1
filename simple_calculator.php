@@ -32,7 +32,7 @@ require_once "partial/header.php";
             $num1 = $_POST["num1"];
             $num2 = $_POST["num2"];
             $operation = $_POST["operation"];
-            $result = "";
+            $result = 0;
 
             switch ($operation) {
                 case "add":
@@ -54,8 +54,11 @@ require_once "partial/header.php";
                 default:
                     $result = "Invalid operation";
             }
-
+            if (is_float($result)) {
+                $result = number_format($result, 2);
+            }
             echo "<p class='" . DISPLAY_CLASS . "'><strong>Result:</strong> $result</p>";
+
         }
         ?>
     </div>

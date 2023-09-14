@@ -30,20 +30,23 @@ require_once "partial/header.php";
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $temperature = $_POST["temperature"];
             $conversion = $_POST["conversion"];
-            $result = "";
+            $result = 0;
+            $unit = "";
 
 
             if ($conversion === "celsius_to_fahrenheit") {
                 $result = ($temperature * 9 / 5) + 32;
-                $result .= CELCSIUS;
+                $unit = FARENHEIT;
             } else {
                 $result = ($temperature - 32) * 5 / 9;
-                $result .= FARENHEIT;
+                $unit = CELCSIUS;
             }
+            $result = number_format($result, 2);
 
 
+            echo "<p class='" . DISPLAY_CLASS . "'><strong>Result:</strong>  $result $unit</p>";
+            $unit = "";
 
-            echo "<p class='" . DISPLAY_CLASS . "'><strong>Result:</strong> $result</p>";
         }
         ?>
 
